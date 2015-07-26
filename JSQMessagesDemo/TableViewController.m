@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"JSQMessagesViewController";
+    self.title = @"Recents";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -38,16 +38,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 2) {
         return 1;
-    }
-    
-    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,27 +58,10 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"Push via storyboard";
+                cell.textLabel.text = @"Assistant";
                 break;
             case 1:
-                cell.textLabel.text = @"Push programmatically";
-                break;
-        }
-    }
-    else if (indexPath.section == 1) {
-        switch (indexPath.row) {
-            case 0:
-                cell.textLabel.text = @"Modal via storyboard";
-                break;
-            case 1:
-                cell.textLabel.text = @"Modal programmatically";
-                break;
-        }
-    }
-    else if (indexPath.section == 2) {
-        switch (indexPath.row) {
-            case 0:
-                cell.textLabel.text = @"Settings";
+                cell.textLabel.text = @"Not used";
                 break;
         }
     }
@@ -92,19 +71,13 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return @"Presentation";
-        case 2:
-            return @"Demo options";
-        default:
-            return nil;
-    }
+    return nil;
+    
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return (section == [tableView numberOfSections] - 1) ? @"Copyright © 2014\nJesse Squires\nMIT License" : nil;
+    return nil;
 }
 
 #pragma mark - Table view delegate
@@ -114,35 +87,13 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                [self performSegueWithIdentifier:@"seguePushDemoVC" sender:self];
-                break;
-            case 1:
             {
                 DemoMessagesViewController *vc = [DemoMessagesViewController messagesViewController];
+                self.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+                
             }
-                break;
-        }
-    }
-    else if (indexPath.section == 1) {
-        switch (indexPath.row) {
-            case 0:
-                [self performSegueWithIdentifier:@"segueModalDemoVC" sender:self];
-                break;
-            case 1:
-            {
-                DemoMessagesViewController *vc = [DemoMessagesViewController messagesViewController];
-                vc.delegateModal = self;
-                UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-                [self presentViewController:nc animated:YES completion:nil];
-            }
-                break;
-        }
-    }
-    else if (indexPath.section == 2) {
-        switch (indexPath.row) {
-            case 0:
-                [self performSegueWithIdentifier:@"SegueToSettings" sender:self];
                 break;
         }
     }

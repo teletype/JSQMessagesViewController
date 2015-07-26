@@ -32,11 +32,14 @@
  *  Customize your layout.
  *  Look at the properties on `JSQMessagesCollectionViewFlowLayout` to see what is possible.
  */
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.title = @"JSQMessages";
+    self.parentViewController.hidesBottomBarWhenPushed = YES;
+    
+    self.title = @"Assistant";
     
     /**
      *  You MUST set your senderId and display name
@@ -122,6 +125,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *nc = [sb instantiateInitialViewController];
     [self.navigationController pushViewController:nc.topViewController animated:YES];
+    
 }
 
 
@@ -313,6 +317,8 @@
     
     [self.demoData.messages addObject:message];
     
+    [self.demoData addResponse:message];
+    
     [self finishSendingMessageAnimated:YES];
 }
 
@@ -322,7 +328,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", nil];
+                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", @"Send healthie",nil];
     
     [sheet showFromToolbar:self.inputToolbar];
 }
@@ -350,6 +356,9 @@
             
         case 2:
             [self.demoData addVideoMediaMessage];
+            break;
+        case 3:
+            [self.demoData addHealthMediaMessage];
             break;
     }
     

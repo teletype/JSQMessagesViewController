@@ -41,6 +41,9 @@
     self.outgoingAvatarsSwitch.on = [NSUserDefaults outgoingAvatarSetting];
     
     self.springySwitch.on = [NSUserDefaults springinessSetting];
+    
+   
+    
 }
 
 - (IBAction)didTapSwitch:(UISwitch *)sender

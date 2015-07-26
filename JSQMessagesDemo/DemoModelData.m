@@ -190,4 +190,28 @@
     [self.messages addObject:videoMessage];
 }
 
+- (void)addHealthMediaMessage
+{
+    // don't have a real video, just pretending
+    NSURL *videoURL = [NSURL URLWithString:@"file://"];
+    
+    JSQVideoMediaItem *videoItem = [[JSQVideoMediaItem alloc] initWithFileURL:videoURL isReadyToPlay:YES];
+    JSQMessage *videoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                   displayName:kJSQDemoAvatarDisplayNameSquires
+                                                         media:videoItem];
+    [self.messages addObject:videoMessage];
+}
+
+- (void)addResponse:(JSQMessage *)message;
+{
+    [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+    JSQMessage *response = [[JSQMessage alloc] initWithSenderId:kJSQDemoAvatarIdJobs
+                                             senderDisplayName:kJSQDemoAvatarDisplayNameJobs
+                                                          date:message.date
+                                                          text:message.text];
+    [self.messages addObject:response];
+
+  
+}
+
 @end
