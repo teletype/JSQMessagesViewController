@@ -117,6 +117,10 @@
 }
 
 
+- (IBAction)longPress:(id)sender {
+    
+    NSLog(@"longPress");
+}
 
 #pragma mark - Testing
 
@@ -559,6 +563,9 @@
                      cancelButtonTitle:@"OK"
                       otherButtonTitles:nil]
      show];
+    
+    
+    
 }
 
 
