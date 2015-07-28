@@ -18,9 +18,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#ifdef NUANCE
+#import <SpeechKit/SpeechKit.h>
+#endif
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+#ifdef NUANCE
+
+- (void)setupSpeechKitConnection;
+#endif
 
 @end

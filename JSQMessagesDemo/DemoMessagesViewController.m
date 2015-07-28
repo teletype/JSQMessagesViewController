@@ -16,10 +16,16 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
+#import "AppDelegate.h"
 #import "DemoMessagesViewController.h"
 
 
 @implementation DemoMessagesViewController
+
+
+const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0x70, 0x6c, 0x9b, 0x65, 0xfc, 0xdd, 0x7c, 0x43, 0x95, 0xaa, 0x3f, 0x2a, 0x43, 0x3c, 0xec, 0xfe, 0x3c, 0x6c, 0x51, 0x22, 0xd3, 0x69, 0x67, 0xdd, 0x81, 0xa7, 0x57, 0x0f, 0xc7, 0x17, 0xbc, 0x37, 0x84, 0x57, 0x9d, 0x80, 0x34, 0x19, 0xc4, 0xc9, 0xc3, 0x03, 0xf4, 0x06, 0x40, 0xe0, 0x04, 0x7c, 0x4c, 0x55, 0x9f, 0x20, 0xbe, 0x06, 0xfd, 0x40, 0xad, 0x54, 0x4f};
+
+
 
 #pragma mark - View lifecycle
 
@@ -39,7 +45,13 @@
     
     self.parentViewController.hidesBottomBarWhenPushed = YES;
     
-    self.title = @"Assistant";
+#ifdef NUANCE
+    self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [self.appDelegate setupSpeechKitConnection];
+#endif
+    
+    
+    self.title = @"Selfie";
     
     /**
      *  You MUST set your senderId and display name
@@ -75,10 +87,12 @@
     /**
      *  Register custom menu actions for cells.
      */
+#ifdef NUANCE
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
-    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action" action:@selector(customAction:)] ];
+    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Talk" action:@selector(customAction:)] ];
 
-
+#endif
+    
     /**
      *  Customize your toolbar buttons
      *
@@ -332,7 +346,11 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", @"Send healthie",nil];
+#ifdef NUANCE
+                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", @"Send healthie",@"Speak",nil];
+#else
+                                        otherButtonTitles:@"Send photo", @"Send location", @"Send video", @"Send card",@"Send healthie",nil];
+#endif
     
     [sheet showFromToolbar:self.inputToolbar];
 }
@@ -362,8 +380,47 @@
             [self.demoData addVideoMediaMessage];
             break;
         case 3:
+            [self addCardMediaMessage];
+            break;
+        case 4:
             [self.demoData addHealthMediaMessage];
             break;
+        case 5:
+            
+#ifdef NUANCE
+            self.voiceSearch = [[SKRecognizer alloc] initWithType:SKSearchRecognizerType
+                                                        detection:SKShortEndOfSpeechDetection
+                                                         language:@"en_US"
+                                                         delegate:self];
+           
+           
+            if (!self.isSpeaking)
+            {
+            
+            self.voiceSearch = [[SKRecognizer alloc] initWithType:SKSearchRecognizerType
+                                                        detection:SKShortEndOfSpeechDetection
+                                                         language:@"en_US"
+                                                         delegate:self];
+            }
+            else
+            {
+                if (self.voiceSearch) {
+                    [self.voiceSearch stopRecording];
+                    [self.voiceSearch cancel];
+                }
+                
+                if (self.isSpeaking) {
+                    [self.vocalizer cancel];
+                    self.isSpeaking = NO;
+                }
+                
+            }
+          
+#endif
+           
+            break;
+            
+          
     }
     
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
@@ -371,7 +428,60 @@
     [self finishSendingMessageAnimated:YES];
 }
 
+- (void)addCardMediaMessage
+{
+    GMImagePickerController *picker = [[GMImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.title = @"Assets";
+    //picker.customNavigationBarPrompt = @"Custom helper message!";
+    picker.colsInPortrait = 3;
+    picker.colsInLandscape = 5;
+    picker.minimumInteritemSpacing = 2.0;
+    //picker.modalPresentationStyle = UIModalPresentationPopover;
+    
+    //UIPopoverPresentationController *popPC = picker.popoverPresentationController;
+    //popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    //   popPC.sourceView = _gmImagePickerButton;
+    //  popPC.sourceRect = _gmImagePickerButton.bounds;
+    [self presentViewController:picker animated:YES completion:nil];
+    //[self showViewController:picker sender:nil];
+/*    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                   displayName:kJSQDemoAvatarDisplayNameSquires
+                                                         media:photoItem];
+    [self.messages addObject:photoMessage];*/
+}
 
+#pragma mark - UIImagePickerControllerDelegate
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+    [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"UIImagePickerController: User ended picking assets");
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"UIImagePickerController: User pressed cancel button");
+}
+
+#pragma mark - GMImagePickerControllerDelegate
+
+- (void)assetsPickerController:(GMImagePickerController *)picker didFinishPickingAssets:(NSArray *)assetArray
+{
+    [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
+}
+
+//Optional implementation:
+-(void)assetsPickerControllerDidCancel:(GMImagePickerController *)picker
+{
+    NSLog(@"GMImagePicker: User pressed cancel button");
+}
 
 #pragma mark - JSQMessages CollectionView DataSource
 
@@ -537,6 +647,8 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
     if (action == @selector(customAction:)) {
+        
+    
         return YES;
     }
 
@@ -557,18 +669,98 @@
 {
     NSLog(@"Custom action received! Sender: %@", sender);
 
-    [[[UIAlertView alloc] initWithTitle:@"Custom Action"
-                               message:nil
-                              delegate:nil
-                     cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil]
-     show];
-    
-    
+#ifdef NUANCE
+    self.voiceSearch = [[SKRecognizer alloc] initWithType:SKSearchRecognizerType
+                                                detection:SKShortEndOfSpeechDetection
+                                                 language:@"en_US"
+                                                 delegate:self];
+
+#endif
     
 }
 
+# pragma mark - SKRecognizer Delegate Methods
 
+#ifdef NUANCE
+- (void)recognizerDidBeginRecording:(SKRecognizer *)recognizer {
+   // self.messageLabel.text = @"Listening..";
+    NSLog(@"Listening..");
+}
+
+- (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer {
+  NSLog(@"Done Listening..");
+}
+
+- (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results {
+    long numOfResults = [results.results count];
+    NSLog(@"didFinishWithResults");
+    if (numOfResults > 0) {
+        
+        NSDate *date = [NSDate date];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:self.senderId
+                                                 senderDisplayName:self.senderDisplayName
+                                                              date:date
+                                                              text:[results firstResult]];
+        
+        [self.demoData.messages addObject:message];
+        
+        [self.demoData addResponse:message];
+        
+        [self finishSendingMessageAnimated:YES];
+
+        
+        // update the text of text field with best result from SpeechKit
+ //       self.searchTextField.text = [results firstResult];
+    }
+    
+  //  self.recordButton.selected = !self.recordButton.isSelected;
+    
+    // This will extract category filter from search text
+ //   NSString *yelpCategoryFilter = [self getYelpCategoryFromSearchText];
+    
+    // This will find nearby restaurants by category
+//    [self findNearByRestaurantsFromYelpbyCategory:yelpCategoryFilter];
+    
+    if (self.voiceSearch) {
+        [self.voiceSearch cancel];
+    }
+}
+
+- (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion {
+  //  self.recordButton.selected = NO;
+    //self.messageLabel.text = @"Connection error";
+    //self.activityIndicator.hidden = YES;
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)vocalizer:(SKVocalizer *)vocalizer willBeginSpeakingString:(NSString *)text {
+    self.isSpeaking = YES;
+}
+
+- (void)vocalizer:(SKVocalizer *)vocalizer didFinishSpeakingString:(NSString *)text withError:(NSError *)error {
+    if (error !=nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        if (self.isSpeaking) {
+            [self.vocalizer cancel];
+        }
+    }
+    
+    self.isSpeaking = NO;
+}
+#endif
 
 #pragma mark - JSQMessages collection view flow layout delegate
 

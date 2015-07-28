@@ -32,4 +32,24 @@
     return YES;
 }
 
+# pragma mark - Setup SpeechKit Connection
+
+#ifdef NUANCE
+- (void)setupSpeechKitConnection {
+    [SpeechKit setupWithID:@"NMDPTRIAL_johan_sellstrom_me20150726124308"
+                      host:@"sandbox.nmdp.nuancemobility.net"
+                      port:443
+                    useSSL:NO
+                  delegate:nil];    // Set earcons to play
+    SKEarcon* earconStart	= [SKEarcon earconWithName:@"earcon_listening.wav"];
+    SKEarcon* earconStop	= [SKEarcon earconWithName:@"earcon_done_listening.wav"];
+    SKEarcon* earconCancel	= [SKEarcon earconWithName:@"earcon_cancel.wav"];
+    
+    [SpeechKit setEarcon:earconStart forType:SKStartRecordingEarconType];
+    [SpeechKit setEarcon:earconStop forType:SKStopRecordingEarconType];
+    [SpeechKit setEarcon:earconCancel forType:SKCancelRecordingEarconType];
+}
+#endif
+
+
 @end

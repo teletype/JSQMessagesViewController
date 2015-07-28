@@ -40,7 +40,7 @@ static NSString * const kJSQDemoAvatarIdWoz = @"309-41802-93823";
 
 
 
-@interface DemoModelData : NSObject
+@interface DemoModelData : NSObject <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *messages;
 

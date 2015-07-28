@@ -29,6 +29,8 @@
 
 @implementation DemoModelData
 
+CLLocationManager *locationManager;
+
 - (instancetype)init
 {
     self = [super init];
@@ -167,17 +169,81 @@
 
 - (void)addLocationMediaMessageCompletion:(JSQLocationMediaItemCompletionBlock)completion
 {
-    CLLocation *ferryBuildingInSF = [[CLLocation alloc] initWithLatitude:37.795313 longitude:-122.393757];
+    
+    if (!locationManager)
+    {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    }
+    
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)] && [CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined) { // iOS8+
+        // Sending a message to avoid compile time error
+        
+        NSLog(@"requestWhenInUseAuthorization");
+        [[UIApplication sharedApplication] sendAction:@selector(requestWhenInUseAuthorization)
+                                                   to:locationManager
+                                                 from:self
+                                             forEvent:nil];
+    }
+    
+    /*
+    if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined)
+    {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    */
+    
+    [locationManager startUpdatingLocation];
+    [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:3.0];
+
+    
+ }
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    
+    NSLog(@"didChangeAuthorizationStatus %d",status);
+    
+    if (status==kCLAuthorizationStatusAuthorizedWhenInUse || status==kCLAuthorizationStatusAuthorizedAlways)
+    {
+        NSLog(@"Authorized location");
+        
+    }
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    // The location "unknown" error simply means the manager is currently unable to get the location.
+    if ([error code] != kCLErrorLocationUnknown) {
+        [self stopUpdatingLocation:NSLocalizedString(@"Error", @"Error")];
+    }
+}
+
+
+- (void)locationManager:(CLLocationManager *)__unused manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)__unused oldLocation
+{
     
     JSQLocationMediaItem *locationItem = [[JSQLocationMediaItem alloc] init];
-    [locationItem setLocation:ferryBuildingInSF withCompletionHandler:completion];
+    
+    [locationItem setLocation:newLocation withCompletionHandler:nil];
+    
+   // [locationItem setLocation:newLocation withCompletionHandler:completion];
     
     JSQMessage *locationMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
                                                       displayName:kJSQDemoAvatarDisplayNameSquires
                                                             media:locationItem];
     [self.messages addObject:locationMessage];
+    
+    
+    [self stopUpdatingLocation:newLocation.description];
+    
 }
 
+- (void)stopUpdatingLocation:(NSString *)state {
+    NSLog(@"stopUpdatingLocation %@",state);
+    [locationManager stopUpdatingLocation];
+    
+}
 - (void)addVideoMediaMessage
 {
     // don't have a real video, just pretending

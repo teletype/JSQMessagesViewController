@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Recents";
+    self.title = @"Messages";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,6 +43,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section==0)
+        return 2;
+    else
         return 1;
 }
 
@@ -58,7 +61,7 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"Assistant";
+                cell.textLabel.text = @"Selfie";
                 break;
             case 1:
                 cell.textLabel.text = @"Not used";

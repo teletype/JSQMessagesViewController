@@ -10,6 +10,10 @@
 	<string>JSQMessages</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>780C39F8043CD9C04A5EA1D8628E5EE25E4D50B6</key>
+		<string>github.com:teletype/breadwallet.git</string>
+		<key>89A5E58482D8620A30DE4E9857B72FF8047DA8B2</key>
+		<string>https://github.com/bitcoin/secp256k1.git</string>
 		<key>90530B99EB0008E7A50951FDFBE02169118FA649</key>
 		<string>https://github.com/jessesquires/JSQMessagesViewController.git</string>
 	</dict>
@@ -17,6 +21,10 @@
 	<string>JSQMessages.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>780C39F8043CD9C04A5EA1D8628E5EE25E4D50B6</key>
+		<string>../../breadwallet</string>
+		<key>89A5E58482D8620A30DE4E9857B72FF8047DA8B2</key>
+		<string>../../breadwallet/secp256k1</string>
 		<key>90530B99EB0008E7A50951FDFBE02169118FA649</key>
 		<string>..</string>
 	</dict>
@@ -32,9 +40,25 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>780C39F8043CD9C04A5EA1D8628E5EE25E4D50B6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>breadwallet</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>90530B99EB0008E7A50951FDFBE02169118FA649</string>
 			<key>IDESourceControlWCCName</key>
 			<string>JSQMessagesViewController</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>89A5E58482D8620A30DE4E9857B72FF8047DA8B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>secp256k1</string>
 		</dict>
 	</array>
 </dict>
