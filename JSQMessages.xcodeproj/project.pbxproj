@@ -26,6 +26,20 @@
 		045714081B655F290062D2E1 /* earcon_done_listening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 045714031B655F290062D2E1 /* earcon_done_listening.wav */; };
 		045714091B655F290062D2E1 /* earcon_listening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 045714041B655F290062D2E1 /* earcon_listening.wav */; };
 		0457140A1B655F290062D2E1 /* earcon_listening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 045714041B655F290062D2E1 /* earcon_listening.wav */; };
+		04AEEFD71B67E7D4003DC496 /* APContact+Sorting.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFCB1B67E7D4003DC496 /* APContact+Sorting.m */; };
+		04AEEFD81B67E7D4003DC496 /* APContact+Sorting.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFCB1B67E7D4003DC496 /* APContact+Sorting.m */; };
+		04AEEFD91B67E7D4003DC496 /* LRIndexedCollationWithSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFCD1B67E7D4003DC496 /* LRIndexedCollationWithSearch.m */; };
+		04AEEFDA1B67E7D4003DC496 /* LRIndexedCollationWithSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFCD1B67E7D4003DC496 /* LRIndexedCollationWithSearch.m */; };
+		04AEEFDB1B67E7D4003DC496 /* ZLAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFCF1B67E7D4003DC496 /* ZLAddressBook.m */; };
+		04AEEFDC1B67E7D4003DC496 /* ZLAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFCF1B67E7D4003DC496 /* ZLAddressBook.m */; };
+		04AEEFDD1B67E7D4003DC496 /* ZLBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFD11B67E7D4003DC496 /* ZLBaseTableViewController.m */; };
+		04AEEFDE1B67E7D4003DC496 /* ZLBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFD11B67E7D4003DC496 /* ZLBaseTableViewController.m */; };
+		04AEEFDF1B67E7D4003DC496 /* ZLResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFD31B67E7D4003DC496 /* ZLResultsTableViewController.m */; };
+		04AEEFE01B67E7D4003DC496 /* ZLResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFD31B67E7D4003DC496 /* ZLResultsTableViewController.m */; };
+		04AEEFE11B67E7D4003DC496 /* ZLPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFD61B67E7D4003DC496 /* ZLPeoplePickerViewController.m */; };
+		04AEEFE21B67E7D4003DC496 /* ZLPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFD61B67E7D4003DC496 /* ZLPeoplePickerViewController.m */; };
+		04AEEFE51B67F2A3003DC496 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFE41B67F2A3003DC496 /* ContactsViewController.m */; };
+		04AEEFE61B67F2A3003DC496 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEEFE41B67F2A3003DC496 /* ContactsViewController.m */; };
 		04CE16391B655944002F5703 /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CE16381B655944002F5703 /* SpeechKit.framework */; };
 		04CE163B1B6559A7002F5703 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CE163A1B6559A7002F5703 /* AVFoundation.framework */; };
 		04CE163D1B6559AE002F5703 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CE163C1B6559AE002F5703 /* AudioToolbox.framework */; };
@@ -171,6 +185,21 @@
 		045714021B655F290062D2E1 /* earcon_cancel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_cancel.wav; sourceTree = "<group>"; };
 		045714031B655F290062D2E1 /* earcon_done_listening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_done_listening.wav; sourceTree = "<group>"; };
 		045714041B655F290062D2E1 /* earcon_listening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_listening.wav; sourceTree = "<group>"; };
+		04AEEFCA1B67E7D4003DC496 /* APContact+Sorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APContact+Sorting.h"; sourceTree = "<group>"; };
+		04AEEFCB1B67E7D4003DC496 /* APContact+Sorting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "APContact+Sorting.m"; sourceTree = "<group>"; };
+		04AEEFCC1B67E7D4003DC496 /* LRIndexedCollationWithSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRIndexedCollationWithSearch.h; sourceTree = "<group>"; };
+		04AEEFCD1B67E7D4003DC496 /* LRIndexedCollationWithSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRIndexedCollationWithSearch.m; sourceTree = "<group>"; };
+		04AEEFCE1B67E7D4003DC496 /* ZLAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLAddressBook.h; sourceTree = "<group>"; };
+		04AEEFCF1B67E7D4003DC496 /* ZLAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLAddressBook.m; sourceTree = "<group>"; };
+		04AEEFD01B67E7D4003DC496 /* ZLBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBaseTableViewController.h; sourceTree = "<group>"; };
+		04AEEFD11B67E7D4003DC496 /* ZLBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBaseTableViewController.m; sourceTree = "<group>"; };
+		04AEEFD21B67E7D4003DC496 /* ZLResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLResultsTableViewController.h; sourceTree = "<group>"; };
+		04AEEFD31B67E7D4003DC496 /* ZLResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLResultsTableViewController.m; sourceTree = "<group>"; };
+		04AEEFD41B67E7D4003DC496 /* ZLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLTypes.h; sourceTree = "<group>"; };
+		04AEEFD51B67E7D4003DC496 /* ZLPeoplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLPeoplePickerViewController.h; sourceTree = "<group>"; };
+		04AEEFD61B67E7D4003DC496 /* ZLPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLPeoplePickerViewController.m; sourceTree = "<group>"; };
+		04AEEFE31B67F2A3003DC496 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		04AEEFE41B67F2A3003DC496 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		04CE16381B655944002F5703 /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = ../DragonMobileSDK_1.4.19/SpeechKit.framework; sourceTree = "<group>"; };
 		04CE163A1B6559A7002F5703 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		04CE163C1B6559AE002F5703 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -387,6 +416,34 @@
 			path = GMImagePicker;
 			sourceTree = "<group>";
 		};
+		04AEEFC81B67E7D4003DC496 /* ZLPeoplePickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04AEEFC91B67E7D4003DC496 /* Internal */,
+				04AEEFD51B67E7D4003DC496 /* ZLPeoplePickerViewController.h */,
+				04AEEFD61B67E7D4003DC496 /* ZLPeoplePickerViewController.m */,
+			);
+			path = ZLPeoplePickerViewController;
+			sourceTree = "<group>";
+		};
+		04AEEFC91B67E7D4003DC496 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				04AEEFCA1B67E7D4003DC496 /* APContact+Sorting.h */,
+				04AEEFCB1B67E7D4003DC496 /* APContact+Sorting.m */,
+				04AEEFCC1B67E7D4003DC496 /* LRIndexedCollationWithSearch.h */,
+				04AEEFCD1B67E7D4003DC496 /* LRIndexedCollationWithSearch.m */,
+				04AEEFCE1B67E7D4003DC496 /* ZLAddressBook.h */,
+				04AEEFCF1B67E7D4003DC496 /* ZLAddressBook.m */,
+				04AEEFD01B67E7D4003DC496 /* ZLBaseTableViewController.h */,
+				04AEEFD11B67E7D4003DC496 /* ZLBaseTableViewController.m */,
+				04AEEFD21B67E7D4003DC496 /* ZLResultsTableViewController.h */,
+				04AEEFD31B67E7D4003DC496 /* ZLResultsTableViewController.m */,
+				04AEEFD41B67E7D4003DC496 /* ZLTypes.h */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		2BBEF3CD91C31A49E5FF9E3C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +478,7 @@
 		88A25EF919D8DEC400924534 = {
 			isa = PBXGroup;
 			children = (
+				04AEEFC81B67E7D4003DC496 /* ZLPeoplePickerViewController */,
 				886C33FE19F45E30006B4997 /* JSQMessagesViewController.podspec */,
 				88A25F3E19D8E01A00924534 /* JSQMessagesViewController */,
 				636A8663AEEE5C37B65C515D /* Frameworks */,
@@ -487,6 +545,8 @@
 				88A25FDE19D8E0C400924534 /* TableViewController.m */,
 				04472D421B65A9B0004A0BAF /* CardController.h */,
 				04472D431B65A9B0004A0BAF /* CardController.m */,
+				04AEEFE31B67F2A3003DC496 /* ContactsViewController.h */,
+				04AEEFE41B67F2A3003DC496 /* ContactsViewController.m */,
 			);
 			path = JSQMessagesDemo;
 			sourceTree = "<group>";
@@ -937,13 +997,17 @@
 				04472D3B1B65A904004A0BAF /* GMGridViewCell.m in Sources */,
 				04472D381B65A904004A0BAF /* GMAlbumsViewController.m in Sources */,
 				88A25FBB19D8E01A00924534 /* JSQMessagesViewController.m in Sources */,
+				04AEEFDD1B67E7D4003DC496 /* ZLBaseTableViewController.m in Sources */,
 				8885734D19DE55D000E89D20 /* NSUserDefaults+DemoSettings.m in Sources */,
 				883C11781A09FB100092A16D /* JSQMessagesCellTextView.m in Sources */,
 				88A25FB919D8E01A00924534 /* UIView+JSQMessages.m in Sources */,
 				88A25FCA19D8E01A00924534 /* JSQMessagesCollectionView.m in Sources */,
 				88A25FD219D8E01A00924534 /* JSQMessagesLabel.m in Sources */,
+				04AEEFE11B67E7D4003DC496 /* ZLPeoplePickerViewController.m in Sources */,
 				88445B4019E1B4470014F889 /* JSQLocationMediaItem.m in Sources */,
+				04AEEFDB1B67E7D4003DC496 /* ZLAddressBook.m in Sources */,
 				04472D3D1B65A904004A0BAF /* GMImagePickerController.m in Sources */,
+				04AEEFE51B67F2A3003DC496 /* ContactsViewController.m in Sources */,
 				88A25FC619D8E01A00924534 /* JSQMessagesAvatarImage.m in Sources */,
 				88A25FD519D8E01A00924534 /* JSQMessagesToolbarContentView.m in Sources */,
 				88A25FC119D8E01A00924534 /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
@@ -964,6 +1028,7 @@
 				886FFD2E19E9A65D00EB8485 /* UIDevice+JSQMessages.m in Sources */,
 				88A25FB619D8E01A00924534 /* NSString+JSQMessages.m in Sources */,
 				88A901B619F618B100F99777 /* JSQMediaItem.m in Sources */,
+				04AEEFD91B67E7D4003DC496 /* LRIndexedCollationWithSearch.m in Sources */,
 				88A25FCC19D8E01A00924534 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				88A25FBE19D8E01A00924534 /* JSQMessagesBubbleImageFactory.m in Sources */,
 				88A25FDF19D8E0C400924534 /* DemoMessagesViewController.m in Sources */,
@@ -971,11 +1036,13 @@
 				886C33FD19F4371E006B4997 /* JSQVideoMediaItem.m in Sources */,
 				88A25FBA19D8E01A00924534 /* JSQMessagesKeyboardController.m in Sources */,
 				88A25FC019D8E01A00924534 /* JSQMessagesToolbarButtonFactory.m in Sources */,
+				04AEEFDF1B67E7D4003DC496 /* ZLResultsTableViewController.m in Sources */,
 				04472D3C1B65A904004A0BAF /* GMGridViewController.m in Sources */,
 				88A25FC219D8E01A00924534 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				88A25FE119D8E0C400924534 /* TableViewController.m in Sources */,
 				88A25FBD19D8E01A00924534 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				88A25FB519D8E01A00924534 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
+				04AEEFD71B67E7D4003DC496 /* APContact+Sorting.m in Sources */,
 				8873B60C1AB7B244006DF9AC /* NSBundle+JSQMessages.m in Sources */,
 				88A25FD019D8E01A00924534 /* JSQMessagesComposerTextView.m in Sources */,
 				88A25FC319D8E01A00924534 /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
@@ -987,11 +1054,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				88A2600219D8E18400924534 /* JSQMessagesUIColorTests.m in Sources */,
+				04AEEFDC1B67E7D4003DC496 /* ZLAddressBook.m in Sources */,
 				88A2601819D8E18400924534 /* JSQMessagesToolbarContentViewTests.m in Sources */,
 				88C00A521A44D4E500B004B3 /* JSQVideoMediaItemTests.m in Sources */,
 				88A2601519D8E18400924534 /* JSQMessagesInputToolbarTests.m in Sources */,
 				88A2601719D8E18400924534 /* JSQMessagesLoadEarlierHeaderViewTests.m in Sources */,
+				04AEEFDA1B67E7D4003DC496 /* LRIndexedCollationWithSearch.m in Sources */,
 				88A2601219D8E18400924534 /* JSQMessagesCollectionViewCellTests.m in Sources */,
+				04AEEFE21B67E7D4003DC496 /* ZLPeoplePickerViewController.m in Sources */,
+				04AEEFD81B67E7D4003DC496 /* APContact+Sorting.m in Sources */,
 				88A2601619D8E18400924534 /* JSQMessagesLabelTests.m in Sources */,
 				88A2600B19D8E18400924534 /* JSQMessagesCollectionViewFlowLayoutTests.m in Sources */,
 				88A2601019D8E18400924534 /* JSQMessageTextTests.m in Sources */,
@@ -1001,10 +1072,13 @@
 				88A2600F19D8E18400924534 /* JSQMessagesBubbleImageTests.m in Sources */,
 				88A2600E19D8E18400924534 /* JSQMessagesAvatarImageTests.m in Sources */,
 				88A2600919D8E18400924534 /* JSQMessagesTimestampFormatterTests.m in Sources */,
+				04AEEFDE1B67E7D4003DC496 /* ZLBaseTableViewController.m in Sources */,
 				88A2601419D8E18400924534 /* JSQMessagesComposerTextViewTests.m in Sources */,
 				88A2601319D8E18400924534 /* JSQMessagesCollectionViewTests.m in Sources */,
 				88A2600119D8E18400924534 /* JSQMessagesNSStringTests.m in Sources */,
+				04AEEFE01B67E7D4003DC496 /* ZLResultsTableViewController.m in Sources */,
 				88A2600A19D8E18400924534 /* JSQMessagesToolbarButtonFactoryTests.m in Sources */,
+				04AEEFE61B67F2A3003DC496 /* ContactsViewController.m in Sources */,
 				88C00A501A44D4D800B004B3 /* JSQPhotoMediaItemTests.m in Sources */,
 				88324C3419F6301C00BC732D /* JSQMessagesMediaViewBubbleImageMaskerTests.m in Sources */,
 				88A2601919D8E18400924534 /* JSQMessagesTypingIndicatorFooterViewTests.m in Sources */,

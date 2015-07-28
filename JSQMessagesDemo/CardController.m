@@ -28,13 +28,21 @@
     picker.colsInPortrait = 3;
     picker.colsInLandscape = 5;
     picker.minimumInteritemSpacing = 2.0;
-    //picker.modalPresentationStyle = UIModalPresentationPopover;
     
-    //UIPopoverPresentationController *popPC = picker.popoverPresentationController;
-    //popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    //   popPC.sourceView = _gmImagePickerButton;
-    //  popPC.sourceRect = _gmImagePickerButton.bounds;
-    [self presentViewController:picker animated:YES completion:nil];
+   [self.navigationController pushViewController:picker animated:NO];
+    
+    picker.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                target:self
+                                                action:@selector(showNewPersonViewController)];
+    
+    picker.navigationItem.leftBarButtonItem.enabled = NO;
+    
+    picker.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                target:self
+                                                action:@selector(showNewPersonViewController)];
+
     //[self showViewController:picker sender:nil];
     
 }

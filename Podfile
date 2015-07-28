@@ -4,7 +4,7 @@ platform :ios, '7.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
-
+pod 'APAddressBook'
 pod 'JSQSystemSoundPlayer', '~> 2.0'
 pod 'Wit', '~> 4.1.0'
 

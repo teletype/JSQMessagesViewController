@@ -26,6 +26,10 @@
 {
     [super viewDidLoad];
     self.title = @"Messages";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                              target:self
+                                              action:@selector(compose)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,7 +48,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section==0)
-        return 2;
+        return 1;
     else
         return 1;
 }
@@ -63,12 +67,16 @@
             case 0:
                 cell.textLabel.text = @"Selfie";
                 break;
-            case 1:
-                cell.textLabel.text = @"Not used";
-                break;
-        }
+         }
     }
     
+   JSQMessagesAvatarImage *avatarImage = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:@"XX"
+                                                             backgroundColor:[UIColor colorWithWhite:0.85f alpha:1.0f]
+                                                                   textColor:[UIColor colorWithWhite:0.60f alpha:1.0f]
+                                                                        font:[UIFont systemFontOfSize:14.0f]
+                                                                    diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+    cell.imageView.image=avatarImage.avatarImage;
+
     return cell;
 }
 
@@ -120,6 +128,11 @@
 - (void)didDismissJSQDemoViewController:(DemoMessagesViewController *)vc
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)compose {
+    
+    self.tabBarController.selectedIndex = 1;
 }
 
 @end
