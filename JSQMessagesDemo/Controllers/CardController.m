@@ -30,18 +30,19 @@
     picker.minimumInteritemSpacing = 2.0;
     
    [self.navigationController pushViewController:picker animated:NO];
-    
+    /*
     picker.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                 target:self
                                                 action:@selector(showNewPersonViewController)];
     
     picker.navigationItem.leftBarButtonItem.enabled = NO;
-    
+    */
     picker.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                 target:self
-                                                action:@selector(showNewPersonViewController)];
+                                                action:@selector(createAssetPressed)];
+    
 
     //[self showViewController:picker sender:nil];
     
@@ -62,6 +63,10 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 
+- (void)createAssetPressed:(UIBarButtonItem *)sender
+{
+    
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

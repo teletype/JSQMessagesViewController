@@ -2,18 +2,35 @@ PODS:
   - APAddressBook (0.1.11):
     - APAddressBook/Core (= 0.1.11)
   - APAddressBook/Core (0.1.11)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - JSQSystemSoundPlayer (2.0.1)
   - OCMock (3.1.2)
   - Wit (4.1.0)
 
 DEPENDENCIES:
   - APAddressBook
+  - BlocksKit (~> 2.2.5)
   - JSQSystemSoundPlayer (~> 2.0)
   - OCMock
   - Wit (~> 4.1.0)
 
 SPEC CHECKSUMS:
   APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   Wit: c00af597e168d45b00109993bb378ce86456c346

@@ -25,4 +25,5 @@ static NSString *const kCellIdentifier = @"cellID";
 - (BOOL)shouldEnableCellforContact:(APContact *)contact;
 - (APContact *)contactForRowAtIndexPath:(NSIndexPath *)indexPath;
 
+
 @end

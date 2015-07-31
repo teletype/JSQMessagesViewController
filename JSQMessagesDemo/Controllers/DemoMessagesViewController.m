@@ -18,6 +18,7 @@
 
 #import "AppDelegate.h"
 #import "DemoMessagesViewController.h"
+#import "DetailsViewController.h"
 
 
 @implementation DemoMessagesViewController
@@ -79,11 +80,15 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
     
     self.showLoadEarlierMessagesHeader = YES;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
+/*    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
                                                                               style:UIBarButtonItemStyleBordered
                                                                              target:self
                                                                              action:@selector(receiveMessagePressed:)];
-
+*/
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                               initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+                                               target:self
+                                               action:@selector(detailsPressed:)];
     /**
      *  Register custom menu actions for cells.
      */
@@ -148,6 +153,13 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
 
 
 #pragma mark - Actions
+
+- (void)detailsPressed:(UIBarButtonItem *)sender
+{
+    DetailsViewController *detailsViewController = [[DetailsViewController alloc] init];
+    [self.navigationController pushViewController:detailsViewController animated:YES];
+
+}
 
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender
 {

@@ -29,7 +29,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                               target:self
-                                              action:@selector(compose)];
+                                              action:@selector(createChatPressed)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                              target:self
+                                              action:@selector(editModePressed)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,6 +80,7 @@
                                                                         font:[UIFont systemFontOfSize:14.0f]
                                                                     diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
     cell.imageView.image=avatarImage.avatarImage;
+    
 
     return cell;
 }
@@ -130,7 +135,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)compose {
+- (void)createChatPressed {
+    
+    self.tabBarController.selectedIndex = 1;
+}
+
+- (void)editModePressed {
     
     self.tabBarController.selectedIndex = 1;
 }

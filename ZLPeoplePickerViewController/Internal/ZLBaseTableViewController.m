@@ -15,6 +15,8 @@
 
 @implementation ZLBaseTableViewController
 
+BOOL partionedContacts = NO;
+
 #pragma mark - Properties
 - (NSMutableArray *)partitionedContacts {
     if (!_partitionedContacts) {
@@ -113,7 +115,8 @@
 - (NSString *)tableView:(UITableView *)tableView
     titleForHeaderInSection:(NSInteger)section {
     
-    return nil;
+    if (!partionedContacts)
+        return nil;
     if ((NSInteger)[[self.partitionedContacts
             objectAtIndex:(NSUInteger)section] count] == 0) {
         return @"";
