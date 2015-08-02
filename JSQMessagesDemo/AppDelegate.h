@@ -21,10 +21,12 @@
 #ifdef NUANCE
 #import <SpeechKit/SpeechKit.h>
 #endif
+#import "ModelData.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) ModelData *modelData;
 
 #ifdef NUANCE
 
@@ -32,3 +34,5 @@
 #endif
 
 @end
+
+extern AppDelegate* gAppDelegate;

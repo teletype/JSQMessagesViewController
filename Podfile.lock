@@ -19,6 +19,11 @@ PODS:
     - BlocksKit/DynamicDelegate
   - JSQSystemSoundPlayer (2.0.1)
   - OCMock (3.1.2)
+  - RBQFetchedResultsController (1.8.9.5):
+    - Realm
+  - Realm (0.94.0):
+    - Realm/Headers (= 0.94.0)
+  - Realm/Headers (0.94.0)
   - Wit (4.1.0)
 
 DEPENDENCIES:
@@ -26,6 +31,7 @@ DEPENDENCIES:
   - BlocksKit (~> 2.2.5)
   - JSQSystemSoundPlayer (~> 2.0)
   - OCMock
+  - RBQFetchedResultsController
   - Wit (~> 4.1.0)
 
 SPEC CHECKSUMS:
@@ -33,6 +39,8 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
+  RBQFetchedResultsController: 955286226119df6e7d31fb347b73c32cad3bb77c
+  Realm: a046149653e0ca220b65b5783da907aa5b74d86c
   Wit: c00af597e168d45b00109993bb378ce86456c346
 
 COCOAPODS: 0.38.2

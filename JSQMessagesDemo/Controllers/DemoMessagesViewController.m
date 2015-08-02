@@ -57,15 +57,18 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
     /**
      *  You MUST set your senderId and display name
      */
-    self.senderId = kJSQDemoAvatarIdSquires;
-    self.senderDisplayName = kJSQDemoAvatarDisplayNameSquires;
+    self.senderId = kJSQDemoAvatarIdMyself;
+    self.senderDisplayName = kJSQDemoAvatarDisplayNameMyself;
     
     
-    /**
-     *  Load up our fake data for the demo
-     */
-    self.demoData = [[DemoModelData alloc] init];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    RLMResults *avatars = [Avatar objectsWhere:@"avatarId == %@",self.senderId];
+
     
+    if (avatars)
+        self.avatar = [avatars firstObject]; // it *should* be unique
+    else
+        self.avatar = nil;
     
     /**
      *  You can set custom avatar sizes
@@ -85,10 +88,12 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
                                                                              target:self
                                                                              action:@selector(receiveMessagePressed:)];
 */
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+/*    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
                                                target:self
                                                action:@selector(detailsPressed:)];
+ */
+    
     /**
      *  Register custom menu actions for cells.
      */
@@ -111,6 +116,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
      *  self.inputToolbar.maximumHeight = 150;
      */
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -161,158 +167,27 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
 
 }
 
-- (void)receiveMessagePressed:(UIBarButtonItem *)sender
+- (void)loadMessages:(Chat *)chat
 {
-    /**
-     *  DEMO ONLY
-     *
-     *  The following is simply to simulate received messages for the demo.
-     *  Do not actually do this.
-     */
+    self.chat = chat;
+    self.avatars = gAppDelegate.modelData.avatars;
+  
+
+    //self.messages = chat.messages;
     
-    
-    /**
-     *  Show the typing indicator to be shown
-     */
-    self.showTypingIndicator = !self.showTypingIndicator;
-    
-    /**
-     *  Scroll to actually view the indicator
-     */
-    [self scrollToBottomAnimated:YES];
-    
-    /**
-     *  Copy last sent message, this will be the new "received" message
-     */
-    JSQMessage *copyMessage = [[self.demoData.messages lastObject] copy];
-    
-    if (!copyMessage) {
-        copyMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdJobs
-                                          displayName:kJSQDemoAvatarDisplayNameJobs
-                                                 text:@"First received!"];
+    self.messages = [[NSMutableArray alloc] init];
+ 
+    for(int i=0;i<[chat.messages count];i++)
+    {
+        Avatar *sender = [chat.messages[i] sender];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:[sender avatarId]
+                           senderDisplayName:kJSQDemoAvatarDisplayNameSquires
+                                        date:[NSDate distantPast]
+                                        text:[chat.messages[i] messageText]];
+        [self.messages addObject:message];
+        
     }
     
-    /**
-     *  Allow typing indicator to show
-     */
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        NSMutableArray *userIds = [[self.demoData.users allKeys] mutableCopy];
-        [userIds removeObject:self.senderId];
-        NSString *randomUserId = userIds[arc4random_uniform((int)[userIds count])];
-        
-        JSQMessage *newMessage = nil;
-        id<JSQMessageMediaData> newMediaData = nil;
-        id newMediaAttachmentCopy = nil;
-        
-        if (copyMessage.isMediaMessage) {
-            /**
-             *  Last message was a media message
-             */
-            id<JSQMessageMediaData> copyMediaData = copyMessage.media;
-            
-            if ([copyMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
-                JSQPhotoMediaItem *photoItemCopy = [((JSQPhotoMediaItem *)copyMediaData) copy];
-                photoItemCopy.appliesMediaViewMaskAsOutgoing = NO;
-                newMediaAttachmentCopy = [UIImage imageWithCGImage:photoItemCopy.image.CGImage];
-                
-                /**
-                 *  Set image to nil to simulate "downloading" the image
-                 *  and show the placeholder view
-                 */
-                photoItemCopy.image = nil;
-                
-                newMediaData = photoItemCopy;
-            }
-            else if ([copyMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
-                JSQLocationMediaItem *locationItemCopy = [((JSQLocationMediaItem *)copyMediaData) copy];
-                locationItemCopy.appliesMediaViewMaskAsOutgoing = NO;
-                newMediaAttachmentCopy = [locationItemCopy.location copy];
-                
-                /**
-                 *  Set location to nil to simulate "downloading" the location data
-                 */
-                locationItemCopy.location = nil;
-                
-                newMediaData = locationItemCopy;
-            }
-            else if ([copyMediaData isKindOfClass:[JSQVideoMediaItem class]]) {
-                JSQVideoMediaItem *videoItemCopy = [((JSQVideoMediaItem *)copyMediaData) copy];
-                videoItemCopy.appliesMediaViewMaskAsOutgoing = NO;
-                newMediaAttachmentCopy = [videoItemCopy.fileURL copy];
-                
-                /**
-                 *  Reset video item to simulate "downloading" the video
-                 */
-                videoItemCopy.fileURL = nil;
-                videoItemCopy.isReadyToPlay = NO;
-                
-                newMediaData = videoItemCopy;
-            }
-            else {
-                NSLog(@"%s error: unrecognized media item", __PRETTY_FUNCTION__);
-            }
-            
-            newMessage = [JSQMessage messageWithSenderId:randomUserId
-                                             displayName:self.demoData.users[randomUserId]
-                                                   media:newMediaData];
-        }
-        else {
-            /**
-             *  Last message was a text message
-             */
-            newMessage = [JSQMessage messageWithSenderId:randomUserId
-                                             displayName:self.demoData.users[randomUserId]
-                                                    text:copyMessage.text];
-        }
-        
-        /**
-         *  Upon receiving a message, you should:
-         *
-         *  1. Play sound (optional)
-         *  2. Add new id<JSQMessageData> object to your data source
-         *  3. Call `finishReceivingMessage`
-         */
-        [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-        [self.demoData.messages addObject:newMessage];
-        [self finishReceivingMessageAnimated:YES];
-        
-        
-        if (newMessage.isMediaMessage) {
-            /**
-             *  Simulate "downloading" media
-             */
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                /**
-                 *  Media is "finished downloading", re-display visible cells
-                 *
-                 *  If media cell is not visible, the next time it is dequeued the view controller will display its new attachment data
-                 *
-                 *  Reload the specific item, or simply call `reloadData`
-                 */
-                
-                if ([newMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
-                    ((JSQPhotoMediaItem *)newMediaData).image = newMediaAttachmentCopy;
-                    [self.collectionView reloadData];
-                }
-                else if ([newMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
-                    [((JSQLocationMediaItem *)newMediaData)setLocation:newMediaAttachmentCopy withCompletionHandler:^{
-                        [self.collectionView reloadData];
-                    }];
-                }
-                else if ([newMediaData isKindOfClass:[JSQVideoMediaItem class]]) {
-                    ((JSQVideoMediaItem *)newMediaData).fileURL = newMediaAttachmentCopy;
-                    ((JSQVideoMediaItem *)newMediaData).isReadyToPlay = YES;
-                    [self.collectionView reloadData];
-                }
-                else {
-                    NSLog(@"%s error: unrecognized media item", __PRETTY_FUNCTION__);
-                }
-                
-            });
-        }
-        
-    });
 }
 
 - (void)closePressed:(UIBarButtonItem *)sender
@@ -345,9 +220,17 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
                                                           date:date
                                                           text:text];
     
-    [self.demoData.messages addObject:message];
+    [self.messages addObject:message];
     
-    [self.demoData addResponse:message];
+    // save it in the db
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+        Message *new_message = [Message createInRealm:realm  withValue:@{@"sender":self.avatar,@"messageText":text,@"date":[NSDate date]}];
+        [self.chat.messages addObject:new_message];
+    [realm commitWriteTransaction];
+    
+//    [self.messages addResponse:message];
     
     [self finishSendingMessageAnimated:YES];
 }
@@ -372,7 +255,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
     if (buttonIndex == actionSheet.cancelButtonIndex) {
         return;
     }
-    
+    /*
     switch (buttonIndex) {
         case 0:
             [self.demoData addPhotoMediaMessage];
@@ -434,6 +317,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
             
           
     }
+     */
     
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
@@ -499,7 +383,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
 
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.demoData.messages objectAtIndex:indexPath.item];
+    return [self.messages objectAtIndex:indexPath.item];
 }
 
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -511,13 +395,13 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
      *  Otherwise, return your previously created bubble image data objects.
      */
     
-    JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+    JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
     
     if ([message.senderId isEqualToString:self.senderId]) {
-        return self.demoData.outgoingBubbleImageData;
+        return gAppDelegate.modelData.outgoingBubbleImageData;
     }
     
-    return self.demoData.incomingBubbleImageData;
+    return gAppDelegate.modelData.incomingBubbleImageData;
 }
 
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -542,7 +426,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
      *
      *  Override the defaults in `viewDidLoad`
      */
-    JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+    JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
     
     if ([message.senderId isEqualToString:self.senderId]) {
         if (![NSUserDefaults outgoingAvatarSetting]) {
@@ -556,7 +440,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
     }
     
     
-    return [self.demoData.avatars objectForKey:message.senderId];
+    return [self.avatars objectForKey:message.senderId];
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
@@ -568,7 +452,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
      *  Show a timestamp for every 3rd message
      */
     if (indexPath.item % 3 == 0) {
-        JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+        JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
     }
     
@@ -577,7 +461,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
-    JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+    JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
     
     /**
      *  iOS7-style sender name labels
@@ -587,7 +471,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
     }
     
     if (indexPath.item - 1 > 0) {
-        JSQMessage *previousMessage = [self.demoData.messages objectAtIndex:indexPath.item - 1];
+        JSQMessage *previousMessage = [self.messages objectAtIndex:indexPath.item - 1];
         if ([[previousMessage senderId] isEqualToString:message.senderId]) {
             return nil;
         }
@@ -608,7 +492,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.demoData.messages count];
+    return [self.messages count];
 }
 
 - (UICollectionViewCell *)collectionView:(JSQMessagesCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -632,7 +516,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
      *  Instead, override the properties you want on `self.collectionView.collectionViewLayout` from `viewDidLoad`
      */
     
-    JSQMessage *msg = [self.demoData.messages objectAtIndex:indexPath.item];
+    JSQMessage *msg = [self.messages objectAtIndex:indexPath.item];
     
     if (!msg.isMediaMessage) {
         
@@ -804,13 +688,13 @@ const unsigned char SpeechKitApplicationKey[] = {0x7a, 0x8d, 0x20, 0xc0, 0xad, 0
     /**
      *  iOS7-style sender name labels
      */
-    JSQMessage *currentMessage = [self.demoData.messages objectAtIndex:indexPath.item];
+    JSQMessage *currentMessage = [self.messages objectAtIndex:indexPath.item];
     if ([[currentMessage senderId] isEqualToString:self.senderId]) {
         return 0.0f;
     }
     
     if (indexPath.item - 1 > 0) {
-        JSQMessage *previousMessage = [self.demoData.messages objectAtIndex:indexPath.item - 1];
+        JSQMessage *previousMessage = [self.messages objectAtIndex:indexPath.item - 1];
         if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]]) {
             return 0.0f;
         }

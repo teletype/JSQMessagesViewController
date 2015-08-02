@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041D50021B6E2E30008C6AC1 /* TTYMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D50011B6E2E30008C6AC1 /* TTYMessage.m */; };
+		041D50031B6E2E30008C6AC1 /* TTYMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D50011B6E2E30008C6AC1 /* TTYMessage.m */; };
 		04392DC61B69447400F9B4B0 /* Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 04392DC51B69447400F9B4B0 /* Model.xcdatamodel */; };
 		04392DC71B69447400F9B4B0 /* Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 04392DC51B69447400F9B4B0 /* Model.xcdatamodel */; };
-		04392DD51B69564600F9B4B0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04392DD41B69564600F9B4B0 /* Realm.framework */; };
-		04392DDE1B6958B500F9B4B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04392DDD1B6958B500F9B4B0 /* Images.xcassets */; };
-		04392DDF1B6958B500F9B4B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04392DDD1B6958B500F9B4B0 /* Images.xcassets */; };
 		04392DEC1B69593300F9B4B0 /* CardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DE11B69593300F9B4B0 /* CardController.m */; };
 		04392DED1B69593300F9B4B0 /* CardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DE11B69593300F9B4B0 /* CardController.m */; };
 		04392DEE1B69593300F9B4B0 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DE31B69593300F9B4B0 /* ContactsViewController.m */; };
@@ -26,8 +25,17 @@
 		04392DF71B69593300F9B4B0 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DEB1B69593300F9B4B0 /* TableViewController.m */; };
 		04392DFA1B69596B00F9B4B0 /* NSUserDefaults+DemoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DF91B69596B00F9B4B0 /* NSUserDefaults+DemoSettings.m */; };
 		04392DFB1B69596B00F9B4B0 /* NSUserDefaults+DemoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DF91B69596B00F9B4B0 /* NSUserDefaults+DemoSettings.m */; };
-		04392DFE1B69599200F9B4B0 /* DemoModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DFD1B69599200F9B4B0 /* DemoModelData.m */; };
-		04392DFF1B69599200F9B4B0 /* DemoModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DFD1B69599200F9B4B0 /* DemoModelData.m */; };
+		04392DFE1B69599200F9B4B0 /* ModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DFD1B69599200F9B4B0 /* ModelData.m */; };
+		04392DFF1B69599200F9B4B0 /* ModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392DFD1B69599200F9B4B0 /* ModelData.m */; };
+		043B614E1B6E734400AE1714 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043B614D1B6E734400AE1714 /* Images.xcassets */; };
+		043B615A1B6E76D200AE1714 /* APLBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61511B6E76D200AE1714 /* APLBaseTableViewController.m */; };
+		043B615B1B6E76D200AE1714 /* APLBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61511B6E76D200AE1714 /* APLBaseTableViewController.m */; };
+		043B615C1B6E76D200AE1714 /* APLDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61531B6E76D200AE1714 /* APLDetailViewController.m */; };
+		043B615D1B6E76D200AE1714 /* APLDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61531B6E76D200AE1714 /* APLDetailViewController.m */; };
+		043B615E1B6E76D200AE1714 /* APLMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61551B6E76D200AE1714 /* APLMainTableViewController.m */; };
+		043B615F1B6E76D200AE1714 /* APLMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61551B6E76D200AE1714 /* APLMainTableViewController.m */; };
+		043B61621B6E76D200AE1714 /* APLResultsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61591B6E76D200AE1714 /* APLResultsTableController.m */; };
+		043B61631B6E76D200AE1714 /* APLResultsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B61591B6E76D200AE1714 /* APLResultsTableController.m */; };
 		04472D361B65A904004A0BAF /* GMImagePicker.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04472D1D1B65A904004A0BAF /* GMImagePicker.strings */; };
 		04472D371B65A904004A0BAF /* GMAlbumsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04472D251B65A904004A0BAF /* GMAlbumsViewCell.m */; };
 		04472D381B65A904004A0BAF /* GMAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04472D271B65A904004A0BAF /* GMAlbumsViewController.m */; };
@@ -177,9 +185,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041D50001B6E2E30008C6AC1 /* TTYMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTYMessage.h; sourceTree = "<group>"; };
+		041D50011B6E2E30008C6AC1 /* TTYMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTYMessage.m; sourceTree = "<group>"; };
 		04392DC51B69447400F9B4B0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		04392DD41B69564600F9B4B0 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = JSQMessagesDemo/Frameworks/Realm.framework; sourceTree = "<group>"; };
-		04392DDD1B6958B500F9B4B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04392DE01B69593300F9B4B0 /* CardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardController.h; sourceTree = "<group>"; };
 		04392DE11B69593300F9B4B0 /* CardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardController.m; sourceTree = "<group>"; };
 		04392DE21B69593300F9B4B0 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
@@ -194,8 +202,17 @@
 		04392DEB1B69593300F9B4B0 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		04392DF81B69596B00F9B4B0 /* NSUserDefaults+DemoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+DemoSettings.h"; sourceTree = "<group>"; };
 		04392DF91B69596B00F9B4B0 /* NSUserDefaults+DemoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DemoSettings.m"; sourceTree = "<group>"; };
-		04392DFC1B69599200F9B4B0 /* DemoModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModelData.h; sourceTree = "<group>"; };
-		04392DFD1B69599200F9B4B0 /* DemoModelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModelData.m; sourceTree = "<group>"; };
+		04392DFC1B69599200F9B4B0 /* ModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelData.h; sourceTree = "<group>"; };
+		04392DFD1B69599200F9B4B0 /* ModelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelData.m; sourceTree = "<group>"; };
+		043B614D1B6E734400AE1714 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		043B61501B6E76D200AE1714 /* APLBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLBaseTableViewController.h; sourceTree = "<group>"; };
+		043B61511B6E76D200AE1714 /* APLBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLBaseTableViewController.m; sourceTree = "<group>"; };
+		043B61521B6E76D200AE1714 /* APLDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLDetailViewController.h; sourceTree = "<group>"; };
+		043B61531B6E76D200AE1714 /* APLDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLDetailViewController.m; sourceTree = "<group>"; };
+		043B61541B6E76D200AE1714 /* APLMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLMainTableViewController.h; sourceTree = "<group>"; };
+		043B61551B6E76D200AE1714 /* APLMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLMainTableViewController.m; sourceTree = "<group>"; };
+		043B61581B6E76D200AE1714 /* APLResultsTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLResultsTableController.h; sourceTree = "<group>"; };
+		043B61591B6E76D200AE1714 /* APLResultsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLResultsTableController.m; sourceTree = "<group>"; };
 		04472D1E1B65A904004A0BAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/GMImagePicker.strings; sourceTree = "<group>"; };
 		04472D1F1B65A904004A0BAF /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/GMImagePicker.strings; sourceTree = "<group>"; };
 		04472D201B65A904004A0BAF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/GMImagePicker.strings; sourceTree = "<group>"; };
@@ -415,7 +432,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04392DD51B69564600F9B4B0 /* Realm.framework in Frameworks */,
 				88445B4619E1B5290014F889 /* MapKit.framework in Frameworks */,
 				88445B4519E1B5210014F889 /* CoreLocation.framework in Frameworks */,
 				88445B3D19E0C0BE0014F889 /* QuartzCore.framework in Frameworks */,
@@ -433,7 +449,7 @@
 		04392DD61B69586300F9B4B0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				04392DDD1B6958B500F9B4B0 /* Images.xcassets */,
+				043B614D1B6E734400AE1714 /* Images.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -450,6 +466,7 @@
 		04392DD81B69586300F9B4B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				043B614F1B6E76D200AE1714 /* PickContacts */,
 				04392DE01B69593300F9B4B0 /* CardController.h */,
 				04392DE11B69593300F9B4B0 /* CardController.m */,
 				04392DE21B69593300F9B4B0 /* ContactsViewController.h */,
@@ -483,6 +500,8 @@
 		04392DDB1B69586300F9B4B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				041D50001B6E2E30008C6AC1 /* TTYMessage.h */,
+				041D50011B6E2E30008C6AC1 /* TTYMessage.m */,
 				045B65531B69611F005EF627 /* TTYBasicContainer.h */,
 				045B656C1B6966F3005EF627 /* TTYChat.h */,
 				045B656D1B6966F3005EF627 /* TTYFriend.h */,
@@ -497,9 +516,9 @@
 				045B65581B69611F005EF627 /* TTYMessageAbstract.m */,
 				045B65591B69611F005EF627 /* TTYMessageFile.m */,
 				045B655A1B69611F005EF627 /* TTYMessageText.m */,
-				04392DFC1B69599200F9B4B0 /* DemoModelData.h */,
+				04392DFC1B69599200F9B4B0 /* ModelData.h */,
 				045B65471B695CFE005EF627 /* TTY.h */,
-				04392DFD1B69599200F9B4B0 /* DemoModelData.m */,
+				04392DFD1B69599200F9B4B0 /* ModelData.m */,
 				045B654F1B695FA9005EF627 /* TTYObject.m */,
 				045B65521B695FCA005EF627 /* TTYObject.h */,
 			);
@@ -511,6 +530,21 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		043B614F1B6E76D200AE1714 /* PickContacts */ = {
+			isa = PBXGroup;
+			children = (
+				043B61501B6E76D200AE1714 /* APLBaseTableViewController.h */,
+				043B61511B6E76D200AE1714 /* APLBaseTableViewController.m */,
+				043B61521B6E76D200AE1714 /* APLDetailViewController.h */,
+				043B61531B6E76D200AE1714 /* APLDetailViewController.m */,
+				043B61541B6E76D200AE1714 /* APLMainTableViewController.h */,
+				043B61551B6E76D200AE1714 /* APLMainTableViewController.m */,
+				043B61581B6E76D200AE1714 /* APLResultsTableController.h */,
+				043B61591B6E76D200AE1714 /* APLResultsTableController.m */,
+			);
+			path = PickContacts;
 			sourceTree = "<group>";
 		};
 		04472D1C1B65A904004A0BAF /* GMImagePicker */ = {
@@ -579,7 +613,6 @@
 		636A8663AEEE5C37B65C515D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				04392DD41B69564600F9B4B0 /* Realm.framework */,
 				04CE16381B655944002F5703 /* SpeechKit.framework */,
 				04CE163E1B6559DC002F5703 /* SystemConfiguration.framework */,
 				04CE163C1B6559AE002F5703 /* AudioToolbox.framework */,
@@ -998,7 +1031,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04472D3A1B65A904004A0BAF /* GMEmptyFolder@2x.png in Resources */,
-				04392DDE1B6958B500F9B4B0 /* Images.xcassets in Resources */,
 				886C33FF19F45E30006B4997 /* JSQMessagesViewController.podspec in Resources */,
 				8861666D19F492B70025B958 /* JSQMessagesAssets.bundle in Resources */,
 				88A25FCF19D8E01A00924534 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
@@ -1009,6 +1041,7 @@
 				88A25FBC19D8E01A00924534 /* JSQMessagesViewController.xib in Resources */,
 				88A25FD819D8E01A00924534 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				04472D391B65A904004A0BAF /* GMEmptyFolder@1x.png in Resources */,
+				043B614E1B6E734400AE1714 /* Images.xcassets in Resources */,
 				88A25F3919D8DF2500924534 /* Main.storyboard in Resources */,
 				04472D411B65A904004A0BAF /* GMVideoIcon@2x.png in Resources */,
 				88A25FD419D8E01A00924534 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
@@ -1021,7 +1054,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04392DDF1B6958B500F9B4B0 /* Images.xcassets in Resources */,
 				88A2601B19D8E45600924534 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1121,6 +1153,8 @@
 				045B655E1B69611F005EF627 /* TTYChat.m in Sources */,
 				88A25FC519D8E01A00924534 /* JSQMessage.m in Sources */,
 				88A25FD719D8E01A00924534 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
+				043B61621B6E76D200AE1714 /* APLResultsTableController.m in Sources */,
+				041D50021B6E2E30008C6AC1 /* TTYMessage.m in Sources */,
 				88A25FD319D8E01A00924534 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				88A25FC819D8E01A00924534 /* JSQPhotoMediaItem.m in Sources */,
 				88C4583019F5F7A0008FD427 /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,
@@ -1129,12 +1163,15 @@
 				04392DF01B69593300F9B4B0 /* DemoMessagesViewController.m in Sources */,
 				88A25FBF19D8E01A00924534 /* JSQMessagesTimestampFormatter.m in Sources */,
 				04472D371B65A904004A0BAF /* GMAlbumsViewCell.m in Sources */,
+				043B615A1B6E76D200AE1714 /* APLBaseTableViewController.m in Sources */,
 				045B65501B695FA9005EF627 /* TTYObject.m in Sources */,
-				04392DFE1B69599200F9B4B0 /* DemoModelData.m in Sources */,
+				04392DFE1B69599200F9B4B0 /* ModelData.m in Sources */,
 				88A25F3C19D8DF2500924534 /* main.m in Sources */,
 				045B65601B69611F005EF627 /* TTYFriend.m in Sources */,
 				045B65641B69611F005EF627 /* TTYMessageAbstract.m in Sources */,
+				043B615E1B6E76D200AE1714 /* APLMainTableViewController.m in Sources */,
 				045B655C1B69611F005EF627 /* TTYBasicContainer.m in Sources */,
+				043B615C1B6E76D200AE1714 /* APLDetailViewController.m in Sources */,
 				88A25F3719D8DF2500924534 /* AppDelegate.m in Sources */,
 				886FFD2E19E9A65D00EB8485 /* UIDevice+JSQMessages.m in Sources */,
 				04392DEE1B69593300F9B4B0 /* ContactsViewController.m in Sources */,
@@ -1202,24 +1239,29 @@
 				88A2600A19D8E18400924534 /* JSQMessagesToolbarButtonFactoryTests.m in Sources */,
 				04392DC71B69447400F9B4B0 /* Model.xcdatamodel in Sources */,
 				88C00A501A44D4D800B004B3 /* JSQPhotoMediaItemTests.m in Sources */,
+				041D50031B6E2E30008C6AC1 /* TTYMessage.m in Sources */,
 				04392DF11B69593300F9B4B0 /* DemoMessagesViewController.m in Sources */,
 				04392DFB1B69596B00F9B4B0 /* NSUserDefaults+DemoSettings.m in Sources */,
 				88324C3419F6301C00BC732D /* JSQMessagesMediaViewBubbleImageMaskerTests.m in Sources */,
 				88A2601919D8E18400924534 /* JSQMessagesTypingIndicatorFooterViewTests.m in Sources */,
 				88A2600319D8E18400924534 /* JSQMessagesUIImageTests.m in Sources */,
 				045B65671B69611F005EF627 /* TTYMessageFile.m in Sources */,
+				043B615F1B6E76D200AE1714 /* APLMainTableViewController.m in Sources */,
+				043B61631B6E76D200AE1714 /* APLResultsTableController.m in Sources */,
 				88C00A4E1A44D4C600B004B3 /* JSQLocationMediaItemTests.m in Sources */,
 				8873B60E1AB7B63E006DF9AC /* JSQMessagesNSBundleTests.m in Sources */,
 				88A2600C19D8E18400924534 /* JSQMessagesCollectionViewLayoutAttributesTests.m in Sources */,
 				045B65691B69611F005EF627 /* TTYMessageText.m in Sources */,
 				045B65651B69611F005EF627 /* TTYMessageAbstract.m in Sources */,
-				04392DFF1B69599200F9B4B0 /* DemoModelData.m in Sources */,
+				04392DFF1B69599200F9B4B0 /* ModelData.m in Sources */,
 				04392DF31B69593300F9B4B0 /* DemoSettingsViewController.m in Sources */,
 				045B65631B69611F005EF627 /* TTYFriendRequest.m in Sources */,
 				88A2600619D8E18400924534 /* JSQMessagesViewControllerTests.m in Sources */,
+				043B615D1B6E76D200AE1714 /* APLDetailViewController.m in Sources */,
 				88A2600519D8E18400924534 /* JSQMessagesKeyboardControllerTests.m in Sources */,
 				88A2600819D8E18400924534 /* JSQMessagesBubbleImageFactoryTests.m in Sources */,
 				045B65611B69611F005EF627 /* TTYFriend.m in Sources */,
+				043B615B1B6E76D200AE1714 /* APLBaseTableViewController.m in Sources */,
 				04392DF51B69593300F9B4B0 /* DetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1352,9 +1394,9 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/johan/tty/DragonMobileSDK_1.4.19,
+					/Users/johan/Documents/tty/DragonMobileSDK_1.4.19,
 					"$(PROJECT_DIR)",
-					/Users/johan/tty/JSQMessagesViewController/JSQMessagesDemo/Frameworks,
+					"/Users/johan/Documents//tty/JSQMessagesViewController/JSQMessagesDemo/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1385,9 +1427,9 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/johan/tty/DragonMobileSDK_1.4.19,
+					/Users/johan/Documents/tty/DragonMobileSDK_1.4.19,
 					"$(PROJECT_DIR)",
-					/Users/johan/tty/JSQMessagesViewController/JSQMessagesDemo/Frameworks,
+					"/Users/johan/Documents//tty/JSQMessagesViewController/JSQMessagesDemo/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

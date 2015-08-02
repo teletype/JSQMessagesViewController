@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class TTYBasicContainer;
-@protocol TBasicContainerDelegate <NSObject>
+@protocol TTYBasicContainerDelegate <NSObject>
 
 - (void)basicContainerUpdate:(TTYBasicContainer *)container
                  insertedSet:(NSIndexSet *)inserted

@@ -43,7 +43,7 @@
 - (void)setup {
     _numberOfSelectedPeople = ZLNumSelectionMax;
     self.filedMask = ZLContactFieldDefault;
-    self.allowAddPeople = YES;
+    self.allowAddPeople = NO;
 }
 
 + (void)initializeAddressBook {
@@ -92,18 +92,27 @@
     self.navigationItem.title = self.title.length > 0 ? self.title : NSLocalizedString(@"Contacts", nil);
     
     if (self.allowAddPeople) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self
                                                   action:@selector(showNewPersonViewController)];
     }
-
+    else
+    {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                 target:self
+                                                 action:@selector(cancelButtonAction:)];
+       
+    }
+ 
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                               target:self
-                                              action:@selector(showNewPersonViewController)];
-    self.navigationItem.leftBarButtonItem.enabled = NO;
+                                             action:@selector(doneButtonAction:)];
+   
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 
     [[NSNotificationCenter defaultCenter]
         addObserver:self
@@ -159,8 +168,12 @@
     return peoplePicker;
 }
 
-- (void)doneButtonAction:(id)sender {
+- (void)cancelButtonAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)doneButtonAction:(id)sender {
+  //  [self dismissViewControllerAnimated:YES completion:nil];
     [self invokeReturnDelegate];
 }
 
@@ -252,7 +265,7 @@
         }
     }
 
-    self.navigationItem.leftBarButtonItem.enabled = self.selectedPeople.count>0;
+    self.navigationItem.rightBarButtonItem.enabled = self.selectedPeople.count>0;
 
     //    NSLog(@"heree");
 

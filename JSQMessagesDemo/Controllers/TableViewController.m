@@ -16,7 +16,11 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
+#import "AppDelegate.h"
 #import "TableViewController.h"
+#import "ModelData.h"
+#import "APLMainTableViewController.h"
+
 
 @implementation TableViewController
 
@@ -30,10 +34,20 @@
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                               target:self
                                               action:@selector(createChatPressed)];
+    /*
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                               target:self
                                               action:@selector(editModePressed)];
+     */
+ 
+    
+    self.modelData = [gAppDelegate modelData];
+    
+    self.chats = [Chat allObjects];
+    
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,10 +65,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0)
-        return 1;
-    else
-        return 1;
+    
+    return [self.chats count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,19 +78,18 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-                cell.textLabel.text = @"Selfie";
-                break;
-         }
-    }
+    cell.textLabel.text = [self.chats[indexPath.row] title];
     
-   JSQMessagesAvatarImage *avatarImage = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:@"XX"
+    NSString *avatarId =  [self.chats[indexPath.row] lastMessage].sender.avatarId;
+ 
+    NSLog(@"AvatarId %@",avatarId);
+    JSQMessagesAvatarImage *avatarImage = [gAppDelegate.modelData.avatars objectForKey:avatarId];
+
+/*    JSQMessagesAvatarImage *avatarImage = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:@"XX"
                                                              backgroundColor:[UIColor colorWithWhite:0.85f alpha:1.0f]
                                                                    textColor:[UIColor colorWithWhite:0.60f alpha:1.0f]
                                                                         font:[UIFont systemFontOfSize:14.0f]
-                                                                    diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+                                                                    diameter:kJSQMessagesCollectionViewAvatarSizeDefault];*/
     cell.imageView.image=avatarImage.avatarImage;
     
 
@@ -101,17 +112,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-            {
-                DemoMessagesViewController *vc = [DemoMessagesViewController messagesViewController];
-                self.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                self.hidesBottomBarWhenPushed = NO;
-                
-            }
-                break;
-        }
+        
+        DemoMessagesViewController *vc = [DemoMessagesViewController messagesViewController];
+        Chat *chat = self.chats[indexPath.row];
+        [vc loadMessages:chat];
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+        
     }
 }
 
@@ -135,14 +143,19 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)createChatPressed {
+- (void)createChatPressed
+{
     
-    self.tabBarController.selectedIndex = 1;
+    //ContactsViewController *vc = [[ContactsViewController alloc] init];
+    APLMainTableViewController *vc = [[APLMainTableViewController alloc] init];
+//    vc.delegateModal = self;
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nc animated:YES completion:nil];
+    
 }
 
 - (void)editModePressed {
     
-    self.tabBarController.selectedIndex = 1;
 }
 
 @end

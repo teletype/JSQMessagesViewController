@@ -7,6 +7,7 @@
 //
 
 #import "TTYObject.h"
+#import "TTYMessage.h"
 #import "TTYFriend.h"
 
 @class TTYMessageAbstract;
@@ -18,6 +19,13 @@
 @interface TTYChat : TTYObject
 
 /**
+ * Arbitrary title of the chat thread. Default is list of friends names.
+ */
+
+@property NSString *title;
+
+
+/**
  * Array with TTYFriends that participate in this chat.
  */
 @property RLMArray<TTYFriend> *friends;
@@ -25,7 +33,10 @@
 /**
  * The latest message that was send or received.
  */
-@property TTYMessageAbstract *lastMessage;
+
+@property RLMArray<TTYMessage> *messages;
+
+@property TTYMessage *lastMessage;
 
 /**
  * This property can be used for storing entered text that wasn't send yet.

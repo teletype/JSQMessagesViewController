@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZLPeoplePickerViewController.h"
+#import "DemoMessagesViewController.h"
 
 @interface ContactsViewController : UIViewController
 

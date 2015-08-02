@@ -60,11 +60,14 @@ ZLPeoplePickerViewControllerDelegate, MFMailComposeViewControllerDelegate>
     }
    
     NSArray *toRecipients = [self emailsForPeople:people];
-    [self showMailPicker:toRecipients];
+//    [self showMailPicker:toRecipients];
+    [self newConversation:toRecipients];
+    
  
 }
 - (void)newPersonViewControllerDidCompleteWithNewPerson:
 (nullable ABRecordRef)person {
+    
     NSLog(@"Added a new person");
 }
 
@@ -121,6 +124,16 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
     [picker setMessageBody:emailBody isHTML:NO];
     
     [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)newConversation:(NSArray *)recipients {
+
+    DemoMessagesViewController *vc = [DemoMessagesViewController messagesViewController];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+ //   self.tabBarController.selectedIndex = 0;
+
 }
 
 - (void)showMailPicker:(NSArray *)recipients {

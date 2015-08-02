@@ -27,7 +27,7 @@
 
 #import "AppDelegate.h"
 
-#import "DemoModelData.h"
+#import "ModelData.h"
 #import "NSUserDefaults+DemoSettings.h"
 #import "GMImagePickerController.h"
 
@@ -49,8 +49,13 @@
 
 @property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 @property (strong, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) NSMutableArray *messages;
+@property (strong, nonatomic) NSDictionary *avatars;
+@property (strong, nonatomic) Avatar *avatar;
+@property (strong, nonatomic) Chat *chat;
 
-@property (strong, nonatomic) DemoModelData *demoData;
+
+
 
 #ifdef NUANCE
 @property (strong, nonatomic) SKRecognizer* voiceSearch;
@@ -58,6 +63,7 @@
 @property BOOL isSpeaking;
 #endif
 
+- (void)loadMessages:(Chat *)chat;
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender;
 
 - (void)closePressed:(UIBarButtonItem *)sender;

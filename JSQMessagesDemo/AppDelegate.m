@@ -20,6 +20,7 @@
 
 #import "NSUserDefaults+DemoSettings.h"
 
+AppDelegate* gAppDelegate;
 
 @implementation AppDelegate
 
@@ -29,6 +30,10 @@
     [NSUserDefaults saveIncomingAvatarSetting:YES];
     [NSUserDefaults saveOutgoingAvatarSetting:YES];
     
+    self.modelData = [[ModelData alloc] init];
+    
+    gAppDelegate = self;
+
     return YES;
 }
 

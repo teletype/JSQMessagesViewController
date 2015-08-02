@@ -1,5 +1,8 @@
+CLANG_CXX_LANGUAGE_STANDARD = compiler-default
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/APAddressBook" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/JSQSystemSoundPlayer" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/Wit"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/APAddressBook" -isystem "${PODS_ROOT}/Headers/Public/BlocksKit" -isystem "${PODS_ROOT}/Headers/Public/JSQSystemSoundPlayer" -isystem "${PODS_ROOT}/Headers/Public/OCMock" -isystem "${PODS_ROOT}/Headers/Public/Wit"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"APAddressBook" -l"BlocksKit" -l"JSQSystemSoundPlayer" -l"Wit" -framework "AddressBook" -framework "AudioToolbox" -framework "Foundation" -framework "MessageUI" -framework "QuartzCore" -framework "UIKit"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/APAddressBook" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/JSQSystemSoundPlayer" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/RBQFetchedResultsController" "${PODS_ROOT}/Headers/Public/Realm" "${PODS_ROOT}/Headers/Public/Realm/realm" "${PODS_ROOT}/Headers/Public/Wit"
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/Realm/core"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/APAddressBook" -isystem "${PODS_ROOT}/Headers/Public/BlocksKit" -isystem "${PODS_ROOT}/Headers/Public/JSQSystemSoundPlayer" -isystem "${PODS_ROOT}/Headers/Public/OCMock" -isystem "${PODS_ROOT}/Headers/Public/RBQFetchedResultsController" -isystem "${PODS_ROOT}/Headers/Public/Realm" -isystem "${PODS_ROOT}/Headers/Public/Realm/realm" -isystem "${PODS_ROOT}/Headers/Public/Wit"
+OTHER_CPLUSPLUSFLAGS = -std=c++1y $(inherited) -std=c++1y $(inherited) -std=c++1y $(inherited)
+OTHER_LDFLAGS = $(inherited) -ObjC -l"APAddressBook" -l"BlocksKit" -l"JSQSystemSoundPlayer" -l"RBQFetchedResultsController" -l"Realm" -l"Wit" -l"c++" -l"realm-ios" -framework "AddressBook" -framework "AudioToolbox" -framework "Foundation" -framework "MessageUI" -framework "QuartzCore" -framework "UIKit"
 PODS_ROOT = ${SRCROOT}/Pods

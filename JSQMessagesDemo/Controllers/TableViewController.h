@@ -20,8 +20,14 @@
 #import <UIKit/UIKit.h>
 
 #import "DemoMessagesViewController.h"
+#import "ContactsViewController.h"
+#import <Realm/Realm.h>
 
 @interface TableViewController : UITableViewController <JSQDemoViewControllerDelegate>
+
+@property (strong, nonatomic) ModelData *modelData;
+@property (nonatomic, strong) RLMNotificationToken *notification;
+@property (nonatomic, strong) RLMResults *chats;
 
 - (IBAction)unwindSegue:(UIStoryboardSegue *)sender;
 

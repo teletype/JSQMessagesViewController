@@ -24,12 +24,14 @@ BOOL partionedContacts = NO;
     }
     return _partitionedContacts;
 }
+
 - (NSMutableSet *)selectedPeople {
     if (!_selectedPeople) {
         _selectedPeople = [NSMutableSet set];
     }
     return _selectedPeople;
 }
+
 - (void)setPartitionedContactsWithContacts:(NSArray *)contacts {
     self.partitionedContacts = [[self emptyPartitionedArray] mutableCopy];
 

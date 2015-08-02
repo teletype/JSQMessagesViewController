@@ -42,8 +42,6 @@
     
     self.springySwitch.on = [NSUserDefaults springinessSetting];
     
-   
-    
 }
 
 - (IBAction)didTapSwitch:(UISwitch *)sender
